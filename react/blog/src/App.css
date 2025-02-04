@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0; 
+}
+
+.header {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 20px;
+  font-weight: bolder;
+}
+.content {
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+.modal {
+  background-color: gray;
+  margin: 20px;
+  padding: 40px;
+}
+.modal h4 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
