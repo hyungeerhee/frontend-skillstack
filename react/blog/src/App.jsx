@@ -12,40 +12,13 @@ function App() {
   ]);
   let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState(0);
-  let [title, setTitle] = useState(0); 
+  let [title, setTitle] = useState(0);
+  let [btnDel, setBtnDel] = useState(0);
+  let [입력값, 입력값변경] = useState("");
 
   return (
     <div className="container">
       <div className="header">{name}</div>
-      {/* 
-      <button style={{margin:"20px"}} onClick={()=>{
-        let copy = [...a]; 
-        copy.sort((c,d) => c.localeCompare(d, "ko-KR"));
-        b(copy)
-      }}>정렬버튼</button>
-
-
-      <button style={{margin:"20px"}} onClick={()=>{
-        let copy = [...a];
-        copy[0] = '여자코트 추천'; 
-        b(copy)
-      }}>글 수정</button>
-      
-      <div className="content">
-        <h3>{a[0]}<span onClick={() => {따봉변경(따봉+1)}}>👍</span>{따봉}</h3>    
-        <br />
-        <span>2월 17일 발행</span>
-      </div>
-      <div className="content">
-        <h3>{a[1]}</h3>
-        <br />
-        <span>2월 17일 발행</span>
-      </div>
-      <div className="content">
-        <h3>{a[2]}</h3>
-        <br />
-        <span className="span">2월 17일 발행</span>
-      </div> */}
       {글제목.map(function (a, i) {
         return (
           <div className="content" key={i}>
@@ -71,6 +44,16 @@ function App() {
             </h3>
             <br />
             <span>2월 17일 발행</span>
+            <button
+              className="delete"
+              onClick={() => {
+                let 글복사 = [...글제목];
+                글복사.splice(i, 1);
+                글제목변경(글복사);
+              }}
+            >
+              삭제
+            </button>
           </div>
         );
       })}
@@ -78,9 +61,28 @@ function App() {
       {modal == true ? (
         <Modal 글제목={글제목} 글제목변경={글제목변경} title={title}></Modal>
       ) : null}
+
+      <div className="upload">
+        <input
+          type="text"
+          onChange={(e) => {
+            입력값변경(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            let 글복사 = [...글제목];
+            글복사.unshift(입력값);
+            글제목변경(글복사);
+          }}
+        >
+          글발행
+        </button>
+      </div>
     </div>
   );
 }
+
 function Modal(props) {
   return (
     <div className="modal" style={{ background: "skyblue" }}>
