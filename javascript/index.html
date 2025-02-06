@@ -36,7 +36,8 @@
 
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand">Navbar</span>
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,9 +68,25 @@
       });
       // 전송버튼 눌렀는데 인풋 값이 공백이면 alert창
       $("form").on("submit", function () {
-        if(document.getElementById('email').value =='' 
-      || document.getElementById('pw').value == '') {
-          alert('입력안함'); 
+        if (
+          document.getElementById("email").value == "" ||
+          document.getElementById("pw").value == ""
+        ) {
+          alert("입력안함");
+        }
+        if (document.getElementById("pw").value.length < 6) {
+          alert("비밀번호를 더 길게 입력하세요");
+        }
+      });
+      let count = 0;
+      $(".badge").on("click", function () {
+        count += 1;
+        if(count%2 == 1) {
+          $('body').html('Light 🔄');
+          $('body').addClass('dark');
+        } else {
+          $('.badge').html('Dark 🔄');
+          $('body').removeClass('dark');
         }
       });
     </script>
