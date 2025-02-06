@@ -21,7 +21,16 @@
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
-        <button class="btn btn-danger" id="close">닫기</button>
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" id="email" class="form-control" />
+          </div>
+          <div class="my-3">
+            <input type="password" id="pw" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary send">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
       </div>
     </div>
 
@@ -40,14 +49,28 @@
       <li class="list-group-item">A fourth item</li>
       <li class="list-group-item">And a fifth one</li>
     </ul>
-    <button id="login">로그인</button>
+
+    <div class="main-bg">
+      <h4>Shirts on sale</h4>
+      <button id="login" class="btn btn-danger">로그인</button>
+    </div>
 
     <script>
+      $(".navbar-toggler").on("click", function () {
+        $(".list-group").toggleClass("show");
+      });
       $("#login").on("click", function () {
         $(".black-bg").addClass("show-modal");
       });
       $("#close").on("click", function () {
         $(".black-bg").removeClass("show-modal");
+      });
+      // 전송버튼 눌렀는데 인풋 값이 공백이면 alert창
+      $("form").on("submit", function () {
+        if(document.getElementById('email').value =='' 
+      || document.getElementById('pw').value == '') {
+          alert('입력안함'); 
+        }
       });
     </script>
 
