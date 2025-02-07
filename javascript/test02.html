@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = "문자열은 따옴표로 둘러싸면 됩니다.";
+      console.log(a.indexOf("따옴"));
+      console.log(`${a.length + a["length"]}`);
+      var b = "hel lo";
+      console.log(a.concat(b));
+      console.log(a.charAt(5));
+      console.log(b.charAt(2));
+      console.log(b.substr(0, 3));
+      console.log(b.slice(-3));
+      console.log(b.split(""));
+      console.log(b.toUpperCase());
+      console.log(b.toLowerCase());
+      console.log(b.trim());
+      console.log(b.replace(" ", ""));
+      var foo;
+      console.log(foo);
+      var el = document.querySelector(".myElam");
+      // HTML 문서에 myElam 클래스를 갖는 요소가 없다면 null을 반환한다.
+      console.log(el); // null
+      var c = ["a", "b", "c", "d"];
+      var d = ["e", "f"];
+      console.log(c.indexOf("c"));
+      console.log(c.length);
+      console.log(c.toString());
+      console.log(c.join(""));
+      console.log(c.concat(d));
+      console.log(a.slice(1, 4));
+      console.log(a.splice);
+      console.log(c.concat(d));
+      console.log(c.pop());
+      console.log(c);
+      console.log(c.push("e"));
+      console.log(c);
+      console.log(c.shift());
+      console.log(c.sort());
+
+      let obj = {
+        name: "이현기",
+        age: 21,
+      };
+      console.log(obj);
+      console.log(obj.age);
+      console.log(Object.keys(obj));
+      console.log(Object.values(obj));
+      obj.age = 1;
+      console.log(obj.age);
+      delete obj.age;
+      console.log(obj.age);
+      obj.people = 3;
+      console.log(obj.people);
+
+      let obj1 = {
+        name: "원숭이",
+        age: 12,
+        favorite: "banana",
+      };
+      for (let i in obj1) {
+        console.log(i + ":" + obj1[i]);
+      }
+      let arr = [10, 20, 30];
+      arr.forEach(function (a, i) {
+        console.log(a);
+      });
+      let fnc = (a,b) => a*b; 
+      
+
+    </script>
+  </body>
+</html>
