@@ -8,4 +8,10 @@
   background-size: cover;
   background-position: center;
 }
-
+.link1 {
+  margin-right: 10px;
+}
+.event {
+  text-align: center;
+  padding: 40px;
+}
