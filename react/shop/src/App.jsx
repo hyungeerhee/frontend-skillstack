@@ -19,8 +19,20 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">REACT SHOP</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail')}}>Detail</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/detail");
+              }}
+            >
+              Detail
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -36,7 +48,7 @@ function App() {
               ></div>
               <div className="container">
                 <div className="row">
-                  {shoes.map(function (a) {
+                  {shoes.map(function (a, i) {
                     return <Product a={a}></Product>;
                   })}
                 </div>
@@ -44,10 +56,13 @@ function App() {
             </div>
           }
         />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/about" element={<div>어바웃페이지임</div>} />
         <Route path="/event" element={<Event />}>
-          <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>}></Route>
+          <Route
+            path="one"
+            element={<div>첫 주문시 양배추즙 서비스</div>}
+          ></Route>
           <Route path="two" element={<div>생일기념 쿠폰받기</div>}></Route>
         </Route>
 
