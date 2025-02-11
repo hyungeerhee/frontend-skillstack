@@ -49,7 +49,7 @@ function App() {
               <div className="container">
                 <div className="row">
                   {shoes.map(function (a, i) {
-                    return <Product a={a}></Product>;
+                    return <Product a={a} key={i}></Product>;
                   })}
                 </div>
               </div>
