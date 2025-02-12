@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Product } from "./components/product.jsx";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import { Detail } from "./routes/Detail.jsx";
+import axios from "axios";
 // import {Product} from './product.jsx';
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -49,9 +50,21 @@ function App() {
               <div className="container">
                 <div className="row">
                   {shoes.map(function (a, i) {
-                    return <Product a={a} key={i}></Product>;
+                    return <Product a={a} i={i + 1} key={i}></Product>;
                   })}
                 </div>
+                <button
+                  onClick={() => {
+                    axios
+                      .get("https://codingapple1.github.io/shop/data2.json")
+                      .then((결과) => {
+                        let copy = [...shoes, ...결과.data];
+                        setShoes(copy);
+                      });
+                  }}
+                className="d-flex mt-4 mx-auto">
+                  더보기
+                </button>
               </div>
             </div>
           }
