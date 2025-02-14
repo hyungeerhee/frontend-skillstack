@@ -10,6 +10,7 @@ import { Product } from "./components/product.jsx";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import { Detail } from "./routes/Detail.jsx";
 import axios from "axios";
+import Cart from "./routes/Cart.jsx";
 // import {Product} from './product.jsx';
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -62,7 +63,8 @@ function App() {
                         setShoes(copy);
                       });
                   }}
-                className="d-flex mt-4 mx-auto">
+                  className="d-flex mt-4 mx-auto"
+                >
                   더보기
                 </button>
               </div>
@@ -80,6 +82,7 @@ function App() {
         </Route>
 
         <Route path="*" element={<div>404</div>}></Route>
+        <Route path="/cart" element={<Cart/>}/>
       </Routes>
     </div>
   );
