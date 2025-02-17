@@ -30,10 +30,10 @@ function App() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/detail");
+                navigate("/cart");
               }}
             >
-              Detail
+              Cart
             </Nav.Link>
           </Nav>
         </Container>

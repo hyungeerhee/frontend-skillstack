@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { changeName, changeAge } from "./../store.jsx";
+import { changeName, changeAge, addCount } from "./../store.jsx";
 
 function Cart() {
   let state = useSelector((state) => state);
@@ -11,9 +11,12 @@ function Cart() {
       <h6 className="d-flex justify-content-center">
         {state.user.name} {state.user.age}의 장바구니
       </h6>
-      <button className="d-block mx-auto" onClick={()=>{
-        dispatch(changeAge()); 
-      }}>
+      <button
+        className="d-block mx-auto"
+        onClick={() => {
+          dispatch(changeAge(2));
+        }}
+      >
         버튼
       </button>
       <Table>
@@ -35,7 +38,7 @@ function Cart() {
                 <td>
                   <button
                     onClick={() => {
-                      dispatch(changeName());
+                      dispatch(addCount(a.id));                      
                     }}
                   >
                     +
