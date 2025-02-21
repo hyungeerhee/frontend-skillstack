@@ -44,6 +44,6 @@ export default configureStore({
     cart: cart.reducer,
   },
 });
-
+  
 export let { changeName, changeAge } = user.actions;
 export let { addCount, addItem } = cart.actions;

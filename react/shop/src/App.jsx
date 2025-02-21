@@ -1,20 +1,31 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import bg from "./img/bg.png";
-import data from "./utils/data.jsx";
-import { useState } from "react";
-import { Product } from "./components/product.jsx";
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import { Detail } from "./routes/Detail.jsx";
-import axios from "axios";
-import Cart from "./routes/Cart.jsx";
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import bg from './img/bg.png'
+import data from './utils/data.jsx'
+import { useState, useEffect } from 'react'
+import { Product } from './components/product.jsx'
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import { Detail } from './routes/Detail.jsx'
+import axios from 'axios'
+import Cart from './routes/Cart.jsx'
 // import {Product} from './product.jsx';
 function App() {
-  let [shoes, setShoes] = useState(data);
-  let navigate = useNavigate();
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, [])
+
+  let obj = { name: 'kim' }
+  localStorage.setItem('data', JSON.stringify(obj))
+  let 꺼낸거 = localStorage.getItem('data')
+  console.log(JSON.parse(꺼낸거).name)
+
+  let [shoes, setShoes] = useState(data)
+  let navigate = useNavigate()
+
+
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -23,19 +34,20 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
-                navigate("/");
+                navigate('/')
               }}
             >
               Home
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/cart");
+                navigate('/cart')
               }}
             >
               Cart
             </Nav.Link>
           </Nav>
+          <Nav className="ms-auto text-white">반가워요 KIM</Nav>
         </Container>
       </Navbar>
 
@@ -46,22 +58,22 @@ function App() {
             <div>
               <div
                 className="main-bg"
-                style={{ backgroundImage: "url(" + bg + ")" }}
+                style={{ backgroundImage: 'url(' + bg + ')' }}
               ></div>
               <div className="container">
                 <div className="row">
                   {shoes.map(function (a, i) {
-                    return <Product a={a} i={i + 1} key={i}></Product>;
+                    return <Product a={a} i={i + 1} key={i}></Product>
                   })}
                 </div>
                 <button
                   onClick={() => {
                     axios
-                      .get("https://codingapple1.github.io/shop/data2.json")
+                      .get('https://codingapple1.github.io/shop/data2.json')
                       .then((결과) => {
-                        let copy = [...shoes, ...결과.data];
-                        setShoes(copy);
-                      });
+                        let copy = [...shoes, ...결과.data]
+                        setShoes(copy)
+                      })
                   }}
                   className="d-flex mt-4 mx-auto"
                 >
@@ -82,10 +94,10 @@ function App() {
         </Route>
 
         <Route path="*" element={<div>404</div>}></Route>
-        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
-  );
+  )
 }
 
 function Event() {
@@ -94,6 +106,6 @@ function Event() {
       <h1>오늘의 이벤트</h1>
       <Outlet></Outlet>
     </div>
-  );
+  )
 }
-export default App;
+export default App
