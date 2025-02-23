@@ -11,6 +11,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import { Detail } from './routes/Detail.jsx'
 import axios from 'axios'
 import Cart from './routes/Cart.jsx'
+import { useQuery } from 'react-query'
 // import {Product} from './product.jsx';
 function App() {
   useEffect(() => {
@@ -20,11 +21,22 @@ function App() {
   let obj = { name: 'kim' }
   localStorage.setItem('data', JSON.stringify(obj))
   let 꺼낸거 = localStorage.getItem('data')
-  console.log(JSON.parse(꺼낸거).name)
 
   let [shoes, setShoes] = useState(data)
   let navigate = useNavigate()
 
+  let result = useQuery(
+    '작명',
+    () => {
+      return axios
+        .get('https://codingapple1.github.io/userdata.json')
+        .then((a) => {
+          console.log(a.data)
+          return a.data
+        })
+    },
+    { staleTime: 2000 } 
+  )
 
   return (
     <div>
@@ -47,7 +59,11 @@ function App() {
               Cart
             </Nav.Link>
           </Nav>
-          <Nav className="ms-auto text-white">반가워요 KIM</Nav>
+          <Nav className="ms-auto text-white">
+            {result.isLoading && '로딩중'}
+            {result.error && '에러남'}
+            {result.data && result.data.name}
+          </Nav>
         </Container>
       </Navbar>
 
