@@ -7,7 +7,7 @@ import bg from './img/bg.png'
 import data from './utils/data.jsx'
 import { useState, useEffect } from 'react'
 import { Product } from './components/product.jsx'
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import { Routes, Route, useNavigate, Outlet } from 'react-router-dom'
 import { Detail } from './routes/Detail.jsx'
 import axios from 'axios'
 import Cart from './routes/Cart.jsx'
@@ -20,7 +20,6 @@ function App() {
 
   let obj = { name: 'kim' }
   localStorage.setItem('data', JSON.stringify(obj))
-  let 꺼낸거 = localStorage.getItem('data')
 
   let [shoes, setShoes] = useState(data)
   let navigate = useNavigate()
@@ -35,7 +34,7 @@ function App() {
           return a.data
         })
     },
-    { staleTime: 2000 } 
+    { staleTime: 2000 }
   )
 
   return (

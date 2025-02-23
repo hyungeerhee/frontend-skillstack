@@ -1,10 +1,10 @@
-import { Table } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { changeName, changeAge, addCount } from "./../store.jsx";
+import { Table } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeAge, addCount } from './../store.jsx'
 
 function Cart() {
-  let state = useSelector((state) => state);
-  let dispatch = useDispatch();
+  let state = useSelector((state) => state)
+  let dispatch = useDispatch()
   return (
     <div>
       <div></div>
@@ -14,7 +14,7 @@ function Cart() {
       <button
         className="d-block mx-auto"
         onClick={() => {
-          dispatch(changeAge(2));
+          dispatch(changeAge(2))
         }}
       >
         버튼
@@ -38,19 +38,19 @@ function Cart() {
                 <td>
                   <button
                     onClick={() => {
-                      dispatch(addCount(a.id));                      
+                      dispatch(addCount(a.id))
                     }}
                   >
                     +
                   </button>
                 </td>
               </tr>
-            );
+            )
           })}
         </tbody>
       </Table>
     </div>
-  );
+  )
 }
 
-export default Cart;
+export default Cart

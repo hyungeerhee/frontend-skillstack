@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Nav } from 'react-bootstrap'
@@ -10,6 +11,7 @@ function Detail(props) {
   let dispatch = useDispatch()
   let [alert, setAlert] = useState(true)
   let { id } = useParams()
+  // eslint-disable-next-line react/prop-types
   let find = props.shoes.find(function (x) {
     return x.id == id
   })
@@ -26,7 +28,7 @@ function Detail(props) {
     꺼낸거 = Array.from(꺼낸거)
     localStorage.setItem('watched', JSON.stringify(꺼낸거))
     // localStorage에 watched 항목에 추가
-  }, [])
+  })
 
   useEffect(() => {
     setTimeout(() => {
@@ -113,6 +115,7 @@ function Detail(props) {
   )
 }
 
+// eslint-disable-next-line react/prop-types
 function TabContent({ 탭 }) {
   let [fade, setFade] = useState('')
 
